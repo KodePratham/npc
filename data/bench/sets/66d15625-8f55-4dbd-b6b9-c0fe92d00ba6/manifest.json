@@ -1,0 +1,76 @@
+{
+  "botId": "66d15625-8f55-4dbd-b6b9-c0fe92d00ba6",
+  "botName": "Lumen Telecom",
+  "model": "claude-haiku-5-5",
+  "seed": 42,
+  "createdAt": "2026-10-15T14:42:22.029Z",
+  "requested": {
+    "total": 1000,
+    "oosShare": 0.12,
+    "inScopeTarget": 880,
+    "oosTarget": 120,
+    "maxPerIntent": 4,
+    "d3Target": 150,
+    "nearDupCutoff": 0.97
+  },
+  "counts": {
+    "final": 974,
+    "inScope": 855,
+    "outOfScope": 119,
+    "byDepth": {
+      "1": 182,
+      "2": 523,
+      "3": 150,
+      "none": 119
+    },
+    "byStyle": {
+      "rambling": 98,
+      "terse": 96,
+      "fragment": 96,
+      "casual": 99,
+      "frustrated": 97,
+      "formal": 97,
+      "question": 98,
+      "typos": 99,
+      "indirect": 96,
+      "non_native": 98
+    },
+    "intentsCovered": 584,
+    "intentsInBot": 794
+  },
+  "dropped": {
+    "generated": 976,
+    "cleanedOrEmpty": 0,
+    "exactDup": 1,
+    "nearDup": 1
+  },
+  "shortfalls": [
+    "Formal Complaint: wanted 2, got 1",
+    "Suspected Account or SIM Fraud: wanted 2, got 1",
+    "Loyalty points and redemption: wanted 2, got 1",
+    "Referral credit: wanted 2, got 1",
+    "Remove a Lumen postpaid line > Request removal of one postpaid line: wanted 2, got 1",
+    "Remove a Lumen postpaid line > Remove multiple or all postpaid lines: wanted 2, got 1",
+    "Remove a Lumen postpaid line > Check on a postpaid line removal request: wanted 2, got 1",
+    "Change a Lumen postpaid plan > When a postpaid plan change takes effect: wanted 2, got 1",
+    "Bring an existing number to Lumen Prepaid > Start a number transfer: wanted 2, got 1",
+    "Transfer a Lumen Prepaid number away > Check a Lumen Prepaid number transfer: wanted 2, got 1",
+    "Prepaid service problems and complaints > Prepaid calls or texts not working: wanted 2, got 1",
+    "Roaming coverage by country > Check roaming availability for a trip with a stopover: wanted 2, got 1",
+    "Roaming data use and charges > Using mobile data while abroad: wanted 2, got 1",
+    "Roaming data use and charges > Understand roaming data charges: wanted 2, got 1",
+    "Business fleet and IoT SIMs > Business fleet and IoT plan options: wanted 2, got 1",
+    "Business fleet and IoT SIMs > Business fleet and IoT SIM pricing: wanted 2, got 1",
+    "Business fleet and IoT SIMs > Shared or pooled data for business devices: wanted 2, got 1",
+    "Business fleet and IoT SIMs > Business fleet and IoT coverage: wanted 2, got 1",
+    "Business invoices and VAT > Business VAT invoice requirements: wanted 2, got 1",
+    "Promotional codes and offer terms > Promo code eligibility and exclusions: wanted 2, got 1",
+    "Promotional codes and offer terms > Combining promotional codes: wanted 2, got 1",
+    "Price guarantee > Competitor price matching: wanted 2, got 1",
+    "Price guarantee > Price guarantee coverage and duration: wanted 2, got 1",
+    "Price guarantee > Review a price or quote discrepancy: wanted 2, got 1"
+  ],
+  "uncoveredDepth12Intents": [],
+  "questionsFile": "questions.jsonl",
+  "questionsSha256": "34c0577d3f86f0ce8f3c0ccf51ccdf0343767bf6438e3185f2bb30bf3b149d39"
+}

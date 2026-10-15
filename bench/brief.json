@@ -1,0 +1,68 @@
+{
+  "name": "Lumen Telecom",
+  "businessDescription": "Lumen Telecom is a fictional mid-size telecom operator serving consumers and small businesses across a national footprint. It sells home broadband (fiber and fixed wireless), postpaid and prepaid mobile plans, phones and accessories, TV and streaming bundles, a smart home security add-on, and connectivity plans for small and medium businesses. Customers manage everything in the Lumen app, online account, or in one of 120 stores. Support is available by chat, phone, and email. Lumen is headquartered in Riverside and operates a national network with 5G coverage in most cities.",
+  "pricing": "Home fiber 500: $55/month. Home fiber 1 Gbps: $70/month. Fixed wireless 100 Mbps: $45/month. Postpaid Basic: $35/month with 10 GB data. Postpaid Plus: $60/month with 50 GB data and 15 GB hotspot. Postpaid Unlimited: $85/month with unlimited data, 50 GB hotspot. Second line on any postpaid plan: 50% off the monthly price. Prepaid Starter: $20 for 30 days with 8 GB. Prepaid Max: $40 for 30 days with unlimited data after 40 GB. Roaming Day Pass: $10 per day in 60+ countries. International calling bundle: $5/month for 200 minutes to 40 countries. TV Essentials: $30/month. TV Plus: $55/month with premium channels. Streaming add-on bundle: $12/month for three streaming apps. Home security starter kit: $199 one-time plus $15/month monitoring. Business Connect: from $89/month per site, with static IP available for $10/month. Late payment fee: $8 after a 7-day grace period. Device financing is interest-free over 24 months with approved credit. Trade-in credit depends on model and condition. Early termination fee on 24-month contracts: $25 per remaining month, capped at $300.",
+  "docsLinks": [],
+  "faqs": "Q: How do I check my data usage? A: Open the Lumen app, select Usage. Q: Can I change my plan mid-cycle? A: Yes, changes take effect at the next billing date unless you upgrade, which starts today. Q: Where is my bill due? A: The due date is shown on your bill and in the app; autopay is available. Q: How do I report an outage? A: Check the outage map in the app first, then report it from Support if the outage does not show. Q: Do you offer installation? A: Yes, fiber installation is booked online and usually takes 1 to 2 weeks. Q: Support hours? A: Chat is 24/7 for account questions; phone support is 7am to 11pm local time every day. Q: Is my data safe? A: We encrypt account data, and you can request a copy or deletion of your personal data from the privacy page.",
+  "goals": "Answer customer questions accurately about plans, billing, network, devices, and account management. Send customers to the right place (app, store, or team) when the bot cannot act. Collect contact details only when a team member needs to follow up.",
+  "tone": "friendly, clear and concise",
+  "dataToCollect": "Name and best contact email or phone for team follow-ups.",
+  "domains": [
+    {
+      "name": "Home broadband",
+      "description": "Fiber and fixed wireless internet plans for the home, speeds, installation booking, slow speeds and Wi-Fi problems, router rental and extenders, static IP for home users, and moving broadband to a new address."
+    },
+    {
+      "name": "Mobile postpaid plans",
+      "description": "Monthly contract phone plans: plan tiers and data allowances, hotspot, adding or removing lines, family and second-line discounts, changing plans, and what happens when data runs out."
+    },
+    {
+      "name": "Prepaid mobile",
+      "description": "Pay-in-advance mobile service: top-ups, plan expiry and validity, activating a new SIM, switching from prepaid to postpaid, and bringing an existing number to or from Lumen."
+    },
+    {
+      "name": "Devices and accessories",
+      "description": "Phones, tablets and accessories: device financing, trade-in value, unlocking, repairs and warranty, device insurance, delivery of devices, and phone compatibility with the network."
+    },
+    {
+      "name": "Billing and payments",
+      "description": "Understanding bills and charges, due dates, autopay setup, payment methods, late fees and payment arrangements, paper bills, disputed charges, and receipts or invoices."
+    },
+    {
+      "name": "Roaming and international",
+      "description": "Using a phone abroad: roaming day passes, roaming data and charges, international calling bundles, calling from abroad, travel SIMs, and country coverage questions."
+    },
+    {
+      "name": "Network and outages",
+      "description": "Coverage and signal, 5G availability, dropped calls, planned and unplanned outages, outage maps and credits, emergency calling, and reporting a network fault."
+    },
+    {
+      "name": "TV and streaming",
+      "description": "TV packages and channel lineups, premium channels, streaming app bundles, set-top box and remote problems, recording, and changing or cancelling a TV package."
+    },
+    {
+      "name": "Home security and smart home",
+      "description": "Security cameras, alarm sensors and the starter kit, monitoring subscription, false alarms, smart plugs and locks, app pairing, and cancelling monitoring."
+    },
+    {
+      "name": "Business plans",
+      "description": "Connectivity for small and medium businesses: business internet sites, static IPs, fleet and IoT SIMs, business invoices and VAT, service level agreements, and adding sites."
+    },
+    {
+      "name": "Account, contract and moving",
+      "description": "Managing the account: name and address changes, changing the account holder, contract length and renewal, early termination and cancelling, transferring service when moving house, and suspending or reconnecting service."
+    },
+    {
+      "name": "Privacy, safety and accessibility",
+      "description": "Personal data requests, marketing opt-outs, SIM swap and account fraud protection, lost or stolen phones, accessibility services such as text relay and large print bills, and making a formal complaint."
+    },
+    {
+      "name": "Loyalty and promotions",
+      "description": "Rewards points and how to redeem them, referral credit, student and senior discounts, promotional codes and their terms, price guarantees, and seasonal offers."
+    },
+    {
+      "name": "Stores and support",
+      "description": "Finding a store, booking a store appointment, store opening hours, support hours and waiting times, callbacks, escalating to a human agent, and feedback about service."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+---
+const features = [
+  {
+    title: 'Follow-ups stay in context',
+    body: 'Sub-intents of the topic the visitor is on get a small ranking boost. Depth-3 follow-ups only match under their parent or beside the active intent.',
+  },
+  {
+    title: 'Collects details with validation',
+    body: 'Intents can ask for text, email, phone, number, date, choice, or contact details. Invalid answers are rejected with a short reason. Optional fields can be skipped, and a cancel word stops collection.',
+  },
+  {
+    title: 'Contact handoff after an offer',
+    body: 'When a reply offers a team follow-up, a "yes" starts collecting the visitor\u2019s details. Completed details are saved as a submission under the intent they came from.',
+  },
+  {
+    title: 'Quick replies',
+    body: 'Replies can include short button labels for the next likely step, so visitors can tap instead of typing. When a template has none, the bot suggests topics instead.',
+  },
+  {
+    title: 'Template placeholders',
+    body: 'Reply templates use {{key}} placeholders. They are filled from the bot\u2019s facts and from details collected earlier in the same conversation.',
+  },
+  {
+    title: 'Replies drafted from your material',
+    body: 'The generator is instructed to use only your business info and docs, and not to invent prices, policies, links, or contact details. Review the generated bot before you go live.',
+  },
+];
+---
+
+<section id="features" class="scroll-mt-24 border-t-4 border-ink">
+  <div class="mx-auto max-w-5xl px-6 py-24">
+    <h2 class="text-2xl text-ink sm:text-3xl">Features</h2>
+    <p class="mt-6 max-w-3xl text-2xl">What the chat engine does with each message, based on the code in this repository.</p>
+
+    <ul class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        features.map((f) => (
+          <li class="pixel-box bg-white p-6">
+            <h3 class="text-xs leading-relaxed text-red">{f.title}</h3>
+            <p class="mt-4 text-xl leading-snug">{f.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

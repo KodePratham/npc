@@ -1,0 +1,24 @@
+{
+  "name": "npc",
+  "version": "0.1.0",
+  "description": "NPC: Just use an embedding model for repetitive chats.",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "bench:gen-bot": "tsx scripts/bench/gen-bot.ts",
+    "bench:questions": "tsx scripts/bench/gen-questions.ts",
+    "bench:run": "tsx scripts/bench/run.ts",
+    "bench:report": "tsx scripts/bench/report.ts",
+    "bench:charts": "python scripts/bench/charts.py"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.134.0",
+    "openai": "7.33.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  }
+}

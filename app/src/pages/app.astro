@@ -1,0 +1,179 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { EMBED_MODELS, GEN_MODEL } from '../bot/models';
+import { SITE_NAME } from '../lib/site';
+
+// Everything runs in the browser, so this page is a static shell.
+export const prerender = true;
+
+const field = 'w-full border-4 border-ink bg-white px-3 py-2 text-xl focus:border-grass-dark focus:outline-none';
+const label = 'mb-2 block font-pixel text-[0.6rem] leading-relaxed';
+
+const fields = [
+  { name: 'name', label: 'Business name', rows: 0, required: true, placeholder: 'Pixel Paws Grooming' },
+  { name: 'businessDescription', label: 'What the business does', rows: 4, required: true, placeholder: 'Products, services, location, hours...' },
+  { name: 'pricing', label: 'Pricing', rows: 3, required: false, placeholder: 'Plans, prices, discounts. Leave empty if unknown.' },
+  { name: 'faqs', label: 'FAQs', rows: 4, required: false, placeholder: 'Q: ...  A: ...' },
+  { name: 'docs', label: 'Docs or extra info (paste text)', rows: 4, required: false, placeholder: 'Policies, product docs, anything the bot should know.' },
+  { name: 'goals', label: 'Bot goals', rows: 2, required: false, placeholder: 'Answer questions and book appointments.' },
+  { name: 'tone', label: 'Tone', rows: 0, required: false, placeholder: 'friendly and concise' },
+  { name: 'dataToCollect', label: 'Details to collect from visitors', rows: 2, required: false, placeholder: 'Name, phone or email, preferred date.' },
+];
+---
+
+<Base title={`Build a bot | ${SITE_NAME}`} description="Build a template chatbot in your browser with your own OpenAI key.">
+  <Header />
+  <main class="px-6 py-12">
+    <div class="mx-auto max-w-5xl">
+      <h1 class="sr-only">Build a bot</h1>
+      <noscript><p class="pixel-box bg-white p-6">This app runs in your browser and needs JavaScript.</p></noscript>
+
+      <div id="key-bar" hidden class="mb-8 flex flex-wrap items-center justify-between gap-3 border-4 border-ink bg-cream px-4 py-2 text-xl">
+        <span>OpenAI key <code id="key-mask" class="bg-white px-1"></code> is kept in this tab only.</span>
+        <button id="forget-key" type="button" class="underline underline-offset-4 hover:text-red">Forget key</button>
+      </div>
+
+      <section id="key-view" hidden class="mx-auto max-w-xl">
+        <div class="pixel-box bg-white p-8">
+          <h2 class="text-sm leading-relaxed">Insert coin: your OpenAI API key</h2>
+          <p class="mt-4 text-xl">
+            {GEN_MODEL} writes your bot's intents and reply templates once. After that, every chat message costs one embedding call.
+          </p>
+          <form id="key-form" class="mt-6">
+            <label for="key-input" class={label}>OpenAI API key</label>
+            <input id="key-input" type="password" autocomplete="off" spellcheck="false" required placeholder="sk-..." class={field} />
+            <p id="key-error" role="alert" hidden class="mt-3 text-xl text-red"></p>
+            <button id="key-submit" type="submit" class="pixel-btn mt-5 bg-red text-white">Start</button>
+          </form>
+          <ul class="mt-6 list-disc space-y-1 pl-5 text-lg text-ink/75">
+            <li>Saved in this tab's session storage only. Closing the tab clears it.</li>
+            <li>Sent straight from your browser to api.openai.com. Our server never sees it.</li>
+            <li>Bots you build are saved in this browser, not on our server.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="home-view" hidden>
+        <div class="grid gap-10 md:grid-cols-[1fr_2fr]">
+          <div>
+            <h2 class="text-sm">Your bots</h2>
+            <ul id="bot-list" class="mt-5 space-y-4"></ul>
+            <p id="bot-empty" hidden class="mt-5 text-xl text-ink/70">No bots yet. Describe a business to build one.</p>
+          </div>
+
+          <div class="pixel-box bg-white p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h2 class="text-sm">New bot</h2>
+              <button id="example-btn" type="button" class="text-xl underline underline-offset-4 hover:text-red">Fill in an example</button>
+            </div>
+            <form id="bot-form" class="mt-6 space-y-5">
+              {
+                fields.map((f) => (
+                  <div>
+                    <label for={`f-${f.name}`} class={label}>
+                      {f.label}
+                      {f.required && <span class="text-red"> *</span>}
+                    </label>
+                    {f.rows ? (
+                      <textarea id={`f-${f.name}`} name={f.name} rows={f.rows} required={f.required} placeholder={f.placeholder} class={field} />
+                    ) : (
+                      <input id={`f-${f.name}`} name={f.name} required={f.required} placeholder={f.placeholder} class={field} />
+                    )}
+                  </div>
+                ))
+              }
+              <div>
+                <label for="f-embed" class={label}>Embedding model</label>
+                <select id="f-embed" name="embedModel" class={field}>
+                  {Object.entries(EMBED_MODELS).map(([id, m]) => <option value={id}>{m.label}</option>)}
+                </select>
+              </div>
+              <label class="flex items-start gap-3 text-xl">
+                <input type="checkbox" name="expand" checked class="mt-1.5 h-5 w-5 accent-grass-dark" />
+                <span>Add sub-intents and follow-ups. This covers far more questions but takes a few minutes. Without it, you get 25 to 40 top-level intents in about a minute.</span>
+              </label>
+              <p id="form-error" role="alert" hidden class="text-xl text-red"></p>
+              <button type="submit" class="pixel-btn bg-red text-white">Build bot</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="gen-view" hidden class="mx-auto max-w-xl">
+        <div class="pixel-box bg-white p-8">
+          <h2 class="text-sm leading-relaxed">Building <span id="gen-name"></span></h2>
+          <p id="gen-step" class="mt-6 text-2xl"></p>
+          <div class="mt-4 h-7 border-4 border-ink bg-cream" role="progressbar" aria-label="Build progress" aria-valuemin="0" aria-valuemax="100">
+            <div id="gen-bar" class="h-full bg-grass transition-[width]" style="width: 0%"></div>
+          </div>
+          <p id="gen-count" class="mt-2 text-xl text-ink/70"></p>
+          <p class="mt-4 text-lg text-ink/70">Keep this tab open until it finishes.</p>
+          <p id="gen-error" role="alert" hidden class="mt-4 text-xl text-red"></p>
+          <div class="mt-6 flex gap-4">
+            <button id="gen-cancel" type="button" class="pixel-btn bg-white">Cancel</button>
+            <button id="gen-back" type="button" hidden class="pixel-btn bg-white">Back</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="chat-view" hidden>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="#" class="text-xl underline underline-offset-4 hover:text-red">&larr; All bots</a>
+          <h2 id="chat-title" class="text-sm"></h2>
+          <div class="flex gap-3">
+            <button id="chat-restart" type="button" class="pixel-btn bg-white text-[0.6rem]">Restart chat</button>
+            <button id="chat-delete" type="button" class="pixel-btn bg-white text-[0.6rem]">Delete bot</button>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-8 lg:grid-cols-[3fr_2fr]">
+          <div class="pixel-box flex h-[38rem] flex-col bg-white">
+            <div id="messages" class="flex-1 space-y-5 overflow-y-auto p-5" aria-live="polite"></div>
+            <div id="chips" class="flex flex-wrap gap-2 px-5 pb-3"></div>
+            <form id="chat-form" class="flex gap-3 border-t-4 border-ink p-3">
+              <label for="chat-input" class="sr-only">Message</label>
+              <input id="chat-input" autocomplete="off" maxlength="2000" placeholder="Type a message..." class={field} />
+              <button type="submit" class="pixel-btn bg-red text-white">Send</button>
+            </form>
+          </div>
+
+          <aside class="space-y-6">
+            <div class="pixel-box bg-white p-5">
+              <h3 class="text-[0.7rem]">Bot</h3>
+              <p id="bot-stats" class="mt-3 text-xl"></p>
+              <label for="threshold" class="mt-4 block text-xl">
+                Match threshold: <span id="threshold-value"></span>
+              </label>
+              <input id="threshold" type="range" min="0.2" max="0.8" step="0.01" class="w-full accent-red" />
+              <p class="text-lg text-ink/70">Messages below this similarity get the fallback reply.</p>
+            </div>
+
+            <div class="pixel-box bg-white p-5">
+              <h3 class="text-[0.7rem]">Collected details</h3>
+              <ul id="submissions" class="mt-3 max-h-56 space-y-3 overflow-y-auto text-lg"></ul>
+              <p id="subs-empty" class="mt-3 text-lg text-ink/70">None yet. Leads appear here when a visitor shares details.</p>
+            </div>
+
+            <div class="pixel-box bg-white p-5">
+              <h3 class="text-[0.7rem]">Templates</h3>
+              <div id="templates" class="mt-3 max-h-96 overflow-y-auto text-lg"></div>
+            </div>
+
+            <div id="notes-box" hidden class="pixel-box bg-cream p-5">
+              <h3 class="text-[0.7rem]">Build notes</h3>
+              <ul id="notes" class="mt-3 list-disc space-y-1 pl-5 text-lg"></ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<script>
+  import { start } from '../bot/ui';
+  start();
+</script>

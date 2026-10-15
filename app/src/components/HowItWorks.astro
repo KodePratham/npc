@@ -1,0 +1,40 @@
+---
+const steps = [
+  {
+    title: 'Describe your business',
+    body: 'Give the bot your business name, what you do, pricing, FAQs, goals, tone, and links to your docs. The bot is built only from this information and the docs it can fetch.',
+  },
+  {
+    title: 'Generate the bot once',
+    body: 'An LLM writes 3 to 6 customer-journey stages and 25 to 40 top-level intents. Each intent has 12 to 20 example messages and a reply template. Each top-level intent is then expanded into 2 to 5 sub-intents, each with follow-ups.',
+  },
+  {
+    title: 'Chat without a language model',
+    body: 'Each visitor message is embedded and compared with every example by cosine similarity. The closest intent wins and its template is sent. If the best score is below the threshold (0.45 by default), the bot sends its fallback reply.',
+  },
+];
+---
+
+<section id="how-it-works" class="scroll-mt-24 border-t-4 border-ink bg-cream">
+  <div class="mx-auto max-w-5xl px-6 py-24">
+    <h2 class="text-2xl text-ink sm:text-3xl">How it works</h2>
+    <p class="mt-6 max-w-3xl text-2xl">
+      Generation is the only step that calls a language model. Once a bot is ready, each reply is a lookup and a template
+      fill.
+    </p>
+
+    <ol class="mt-14 grid gap-10 md:grid-cols-3">
+      {
+        steps.map((step, i) => (
+          <li class="pixel-box bg-white p-6">
+            <span class="flex h-10 w-10 items-center justify-center bg-grass font-pixel text-xs text-white">
+              {i + 1}
+            </span>
+            <h3 class="mt-5 text-sm leading-relaxed">{step.title}</h3>
+            <p class="mt-4 text-xl leading-snug">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import { REPO_URL, SITE_NAME, TAGLINE } from '../lib/site';
+---
+
+<section class="px-6 pt-10 pb-20 md:pt-14">
+  <div class="mx-auto max-w-5xl">
+    <h1 class="sr-only">{SITE_NAME}: {TAGLINE}</h1>
+
+    <figure class="pixel-box overflow-hidden bg-white">
+      <img
+        src="/npc-banner.png"
+        alt="Pixel art banner for NonplayerCharacter: a black dinosaur and red mushrooms on a grassy hill, under the title Non Player Character."
+        width="1024"
+        height="576"
+        fetchpriority="high"
+        class="block h-auto w-full"
+      />
+    </figure>
+
+    <div class="mt-16 grid gap-14 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="text-2xl leading-snug">
+          An LLM drafts your bot once, from your business info and docs. After that, every visitor message is embedded,
+          matched to the closest intent, and answered with that intent's fixed reply. No language model runs at chat time.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-5">
+          <a href="/app" class="pixel-btn bg-red text-white">Build a bot</a>
+          <a href={REPO_URL} target="_blank" rel="noopener noreferrer" class="pixel-btn bg-white">
+            View on GitHub
+          </a>
+          <a href="#how-it-works" class="pixel-btn bg-white">How it works</a>
+        </div>
+      </div>
+
+      <div class="pixel-box bg-white p-6" aria-hidden="true">
+        <p class="font-pixel text-[0.6rem] text-red">PLAYER</p>
+        <p class="mt-2 text-2xl">how much does it cost?</p>
+
+        <p class="my-5 text-center text-xl text-grass-dark">-- matched intent: Pricing --</p>
+
+        <p class="font-pixel text-[0.6rem] text-red">NPC</p>
+        <p class="mt-2 text-2xl">
+          Plans start at {'{{starting_price}}'}. Want a team member to follow up?
+          <span class="blink ml-1 text-red">&#9660;</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

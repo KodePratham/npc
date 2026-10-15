@@ -1,0 +1,13 @@
+{
+    "runId":  "lumen-main",
+    "botId":  "66d15625-8f55-4dbd-b6b9-c0fe92d00ba6",
+    "botName":  "Lumen Telecom",
+    "questionsFile":  "data/bench/sets/66d15625-8f55-4dbd-b6b9-c0fe92d00ba6/questions.jsonl",
+    "questionsSha256":  "34c0577d3f86f0ce8f3c0ccf51ccdf0343767bf6438e3185f2bb30bf3b149d39",
+    "embedModel":  "text-embedding-3-small",
+    "llmModel":  "gpt-6-luna",
+    "llmEffort":  "low",
+    "threshold":  0.45,
+    "contextBoost":  0.05,
+    "createdAt":  "2026-10-15T14:48:19.623Z"
+}

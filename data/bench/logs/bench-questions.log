@@ -1,0 +1,16 @@
+Bot Lumen Telecom: 794 intents. Target 1000 = 880 in scope + 120 out of scope.
+Planned in-scope: 880 from 584 intents (150 follow-ups)
+Writing with claude-haiku-5-5: 72 in-scope batches, 6 out-of-scope batches
+
+Wrote 974 questions to data\bench\sets\66d15625-8f55-4dbd-b6b9-c0fe92d00ba6\questions.jsonl
+  in scope 855, out of scope 119, intents covered 584/794
+  dropped: 0 empty, 1 exact dup, 1 near dup
+  Review data\bench\sets\66d15625-8f55-4dbd-b6b9-c0fe92d00ba6\label-audit.csv before starting the run.
+node.exe :   Short of target 1000. Check shortfalls in manifest.json.
+At C:\Users\user\AppData\Roaming\npm\npx.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/npm/bin/npx-cli.js" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (  Short of targ... manifest.json.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
